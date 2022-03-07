@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+import React, { Component } from 'react';
+import Navbar from './components/Navbar'
+import User from './components/User'
+import Users from './components/Users';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      users: []
+    }
+  }
+  
+  componentDidMount(){
+    axios
+    .get('https://api.github.com/users')
+    .then(res => {
+      this.setState({users: res.data});
+      console.log(this.state.users);
+    });
+  }
+   
+  
+  render(){
+    return (
+      <React.Fragment>
+        <Navbar title="Github Finder" icon="fa-solid fa-code-branch" />
+        <Users users={this.state.users} />
+      </React.Fragment>
+    );
+  }
 }
 
 export default App;
