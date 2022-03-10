@@ -1,4 +1,5 @@
 
+Github user finder, using React.js and Chakra UI 
 
 ## Available Scripts
 
