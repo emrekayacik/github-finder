@@ -1,13 +1,30 @@
 import React, { Component } from 'react'
+import {Box,Button,Menu,MenuButton,MenuList,MenuGroup,MenuItem,MenuDivider,Link} from '@chakra-ui/react';
 
 class Navbar extends Component {
     render() {
         return (
-            <nav className="navbar navbar-dark bg-primary">
-                <a href="#" className="navbar-brand">
+            <Box className="navbar navbar-dark bg-primary">
+                <Link style={{textDecoration: 'none'}} href="#" className="navbar-brand">
                     <i className={this.props.icon}></i> {this.props.title}
-                </a>
-            </nav>
+                </Link>
+                <Menu>
+                    <MenuButton as={Button} colorScheme='pink'>
+                        Profile
+                    </MenuButton>
+                    <MenuList>
+                        <MenuGroup title='Profile'>
+                            <MenuItem>My Account</MenuItem>
+                            <MenuItem>Payments </MenuItem>
+                        </MenuGroup>
+                        <MenuDivider />
+                        <MenuGroup title='Help'>
+                            <MenuItem>Docs</MenuItem>
+                            <MenuItem>FAQ</MenuItem>
+                        </MenuGroup>
+                    </MenuList>
+                </Menu>
+            </Box>
         )
     }
 }
