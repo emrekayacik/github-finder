@@ -1,5 +1,5 @@
 
-Github user finder, using React.js and Chakra UI 
+## Github user finder, using React.js and Chakra UI 
 
 ## Available Scripts
 
