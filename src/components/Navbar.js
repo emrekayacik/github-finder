@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
-import {Box,Button,Menu,MenuButton,MenuList,MenuGroup,MenuItem,MenuDivider,Link} from '@chakra-ui/react';
+import {Box,Button,Menu,MenuButton,MenuList,MenuGroup,MenuItem,MenuDivider} from '@chakra-ui/react';
+import {Link} from 'react-router-dom';
+
 
 class Navbar extends Component {
     render() {
         return (
             <Box className="navbar navbar-dark bg-primary">
-                <Link style={{textDecoration: 'none'}} href="#" className="navbar-brand">
+                <Link style={{textDecoration: 'none'}} to="#" className="navbar-brand">
                     <i className={this.props.icon}></i> {this.props.title}
                 </Link>
                 <Menu>
@@ -14,7 +16,7 @@ class Navbar extends Component {
                     </MenuButton>
                     <MenuList>
                         <MenuGroup title='Profile'>
-                            <MenuItem>My Account</MenuItem>
+                            <Link style={{textDecoration: "none",color: "inherit"}} to="/About" ><MenuItem>About</MenuItem></Link>
                             <MenuItem>Payments </MenuItem>
                         </MenuGroup>
                         <MenuDivider />
