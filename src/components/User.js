@@ -4,7 +4,7 @@ import {Box,Image,Flex,Badge,Text} from '@chakra-ui/react';
 class User extends Component {
 
     render() {
-        const {name,avatar_url,login,html_url,followers,blog,id} = this.props.user;
+        const {name,avatar_url,login,html_url,followers,blog,id,node_id} = this.props.user;
         return (
             <React.Fragment>
                 
@@ -34,17 +34,16 @@ class User extends Component {
                               fontWeight="bold"
                               color="pink.800"
                             >
-                              Verified &bull; {name}
+                              Verified &bull; {id} {name}
                             </Text>
                           </Flex>
                           <Text mt={2} fontSize="xl" fontWeight="semibold" lineHeight="short">
-                            Modern, Chic Penthouse with Mountain, City & Sea Views
+                            {name}
                           </Text>
-                          <Text mt={2}>$119/night</Text>
                           <Flex mt={2} align="center">
                             <Box color="orange.400" />
                             <Text ml={1} fontSize="sm">
-                              <b>4.84</b> (190)
+                              <b>{node_id}</b> (190)
                             </Text>
                           </Flex>
       </Box>
