@@ -14,6 +14,7 @@ class App extends Component {
     this.state = {
       users: [],
       user: {},
+      repos: [],
       isLoading: false,
       isSearched: false,
       cleared: false
@@ -60,6 +61,22 @@ class App extends Component {
     });
     },500)
   }
+  getUserRepos = (login) => {
+    this.setState({
+      isLoading: true
+    });
+    window.setTimeout(()=>{
+      axios
+    .get(`https://api.github.com/users/${login}/repos`)
+    .then(res => {
+      this.setState(
+        {
+          repos: res.data,
+          isLoading: false,
+        });
+    });
+    },500)
+  }
   render(){
     return (
       <React.Fragment>
@@ -77,7 +94,7 @@ class App extends Component {
                       cleared={this.state.cleared} 
                       isSearched={this.state.isSearched} users={this.state.users} />}
                     </>} />
-                    <Route path="/users/:login" element={<UserDetails user={this.state.user} getUserDetail={this.getUserDetail} />} />
+                    <Route path="/users/:login" element={<UserDetails repos={this.state.repos} getUserRepos={this.getUserRepos} user={this.state.user} getUserDetail={this.getUserDetail} />} />
                     <Route path="/About" element={<About />} />
                     <Route path="*" element={
                             <main style={{ padding: "1rem" }}>
